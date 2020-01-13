@@ -22,7 +22,7 @@ steps:
 
 - task: AzureFileCopy@3
   inputs:
-    SourcePath: 'build/html'
+    SourcePath: '_site'
     azureSubscription: 'Windows Azure MSDN - Visual Studio Premium(cd7c46c9-f860-4a94-b235-f1d876f9e402)'
     Destination: 'AzureBlob'
     storage: 'documentationascodedocfx'
