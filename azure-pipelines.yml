@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: CmdLine@2
+  inputs:
+    script: |
+      choco install docfx
+      choco install plantuml
+      choco install graphviz
+- task: PowerShell@2
+  inputs:
+    filePath: 'build-docs.ps1'
+
+- task: AzureFileCopy@3
+  inputs:
+    SourcePath: 'build/html'
+    azureSubscription: 'Windows Azure MSDN - Visual Studio Premium(cd7c46c9-f860-4a94-b235-f1d876f9e402)'
+    Destination: 'AzureBlob'
+    storage: 'documentationascode-docfx'
+    ContainerName: '$web'
