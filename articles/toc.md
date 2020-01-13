@@ -1,3 +1,6 @@
 ﻿# [Getting Started](docfx_getting_started.md)
 # [Engineering Guidelines](engineering_guidelines.md)
 # [CSharp Coding Standards](csharp_coding_standards.md)
+# [C4 Component Diagram](c4-component-diagram.md)
+# [C4 Deployment Diagram](c4-deployment-diagram.md)
+# [C4 Sequence Diagram](c4-sequence-diagram.md)

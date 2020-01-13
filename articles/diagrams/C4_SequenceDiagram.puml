@@ -1,0 +1,6 @@
+@startuml sequence-diagram
+"Component 1" -> "Component 2": initialize
+"Component 2" -> "Component 3": run import 
+"Component 3" -> "Service X": request data
+"Component 3" -> "Component 2": return result
+@enduml
