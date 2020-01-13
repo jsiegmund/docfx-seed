@@ -11,6 +11,7 @@
 #>
 
 param (
+  [Switch]$Serve = $false,
   [Switch]$SkipImages = $false
 )
 
@@ -39,12 +40,18 @@ if (-not $SkipImages.IsPresent) {
   }
 }
 
-Write-Host "Kicking off Sphinx build process." -ForegroundColor Yellow
+Write-Host "Kicking off docfx build process." -ForegroundColor Yellow
 
 $docfxArgs = @(    
-      "docfx.json",
-      "--serve"
-    )
+  "docfx.json"
+)
+
+# Add '--serve' to arguments in order to start serving the site in place
+if ($Serve.IsPresent) {
+
+  Write-Output "PRESENT"
+  $docfxArgs = $docfxArgs + "--serve"
+}
 
 # Start the make process which uses Sphynx to convert RST to HTML
 Start-Process "docfx" -ArgumentList $docfxArgs -NoNewWindow -Wait
